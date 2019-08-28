@@ -9,7 +9,7 @@ variable "aws_region" {
 
 variable "key_name" {
   description = "Key name for SSHing into EC2"
-  default = "service_studio_keypair_test"
+  default = "my_keypair_test"
 }
 
 variable "aws_alb_name" {
