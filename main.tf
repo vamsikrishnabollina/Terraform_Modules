@@ -4,24 +4,13 @@ provider "aws" {
 terraform {
 backend "s3" {
 encrypt = true
-bucket = "servicestudio-jenkins-state"
+bucket = "jenkins-state"
 region = "us-west-2"
 key = "terraform.tfstate"
 ##dynamodb_table = "terraform-state-lock-dynamo-np"
  }
 }
-#resource "aws_security_group" "sg" {
- # name = "${var.aws_security_group_name}"
-  #description = "${var.security_group_description}"
-  #vpc_id = "${var.vpc_id}"
-  #ingress {
-   # from_port   = "${var.ingress_from_port1}"
-    #to_port     = "${var.ingress_to_port1}"
-    #protocol    = "${var.protocol}"
-    #cidr_blocks = ["12.12.163.34/32", "66.35.253.251/32"]
-    #description = "${var.tags_RWC}"
-   #}
-#}
+
 resource "aws_alb" "jenkins_alb" {
   name            = "${var.aws_alb_name}"
   internal        = "${var.load_balancer_internal}"
@@ -37,7 +26,7 @@ lifecycle {
 }
 resource "aws_route53_record" "route" {
   zone_id = "${var.route53_zone_id}"
-  name    = "jenkins.xmm.west2"
+  name    = "jenkins.test.west2"
   type    = "A"
 
   alias {
