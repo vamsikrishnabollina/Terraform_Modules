@@ -1,4 +1,4 @@
-provider "aws" {
+provider "abc" {
   region = "${var.aws_region}"
 }
 terraform {
